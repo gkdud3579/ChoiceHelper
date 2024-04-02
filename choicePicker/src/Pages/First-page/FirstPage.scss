@@ -1,0 +1,29 @@
+.first-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+    .title {
+      color: cyan;
+      font-family: 'Press Start 2P';
+      font-size: 30px;
+      margin-bottom: 40px; 
+    }
+  
+    .start-button {
+      background-color: yellow;
+      border: none;
+      padding: 15px 100px;
+      font-family: 'Press Start 2P';
+      font-size: 20px; 
+      color: black;
+      cursor: pointer;
+      border-radius: 10px;
+      &:hover {
+        background-color: darken(yellow, 10%);
+      }
+    }
+  }
+  
