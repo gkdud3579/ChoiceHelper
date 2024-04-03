@@ -3,9 +3,9 @@ import './ResultPage.scss';
 function ResultPage() {
   return (
     <div className="result-page">
-      <div className="title">This is your choice!</div>
-      <span>choice</span>
-      <link>share your choice</link>
+      <div className="result-title">This is your choice!</div>
+      <div className="result">choice</div>
+      <a>share your choice</a>
     </div>
   );
 }
