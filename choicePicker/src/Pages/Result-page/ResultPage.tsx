@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./ResultPage.scss";
@@ -8,7 +7,7 @@ function ResultPage() {
   const navigate = useNavigate();
   const { chosen } = location.state || {};
 
-  const determineFont = (value) => {
+  const determineFont = (value: string) => {
     const koreanRegex = /[가-힣]/;
     return koreanRegex.test(value) ? "korean-font" : "english-font";
   };

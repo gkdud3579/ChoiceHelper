@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./InputPage.scss";
 
@@ -8,14 +8,14 @@ function InputPage() {
   const navigate = useNavigate();
 
   // 입력 값 변경 핸들러
-  const handleChange = (index, value) => {
+  const handleChange = (index: number, value: string) => {
     const newChoices = [...choices];
     newChoices[index] = value;
     setChoices(newChoices);
   };
 
   // 폰트를 결정하는 함수
-  const determineFont = (value) => {
+  const determineFont = (value: string) => {
     const koreanRegex = /[가-힣]/;
     return koreanRegex.test(value) ? "korean-font" : "english-font";
   };
