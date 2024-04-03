@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    // background-color: black;
   
     .title {
       color: cyan;
@@ -18,7 +19,7 @@
       padding: 15px 100px;
       font-family: 'Press Start 2P';
       font-size: 20px; 
-      color: black;
+      // color: black;
       cursor: pointer;
       border-radius: 10px;
       &:hover {
