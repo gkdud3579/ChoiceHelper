@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FirstPage from "./pages/First-page/FistPage";
-import InputPage from "./pages/Input-page/InputPage";
-import LoadingPage from "./pages/Loading-page/LoadingPage";
-import ResultPage from "./pages/Result-page/ResultPage";
+import FirstPage from './pages/First-page/FirstPage';
+import InputPage from './pages/Input-page/InputPage';
+import LoadingPage from './pages/Loading-page/LoadingPage';
+import ResultPage from './pages/Result-page/ResultPage';
 
 function App() {
   return (
