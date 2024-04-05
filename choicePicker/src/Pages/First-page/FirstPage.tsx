@@ -10,7 +10,7 @@ function FirstPage() {
 
   return (
     <div className="first-page">
-      <div className="title">Choice Picker</div>
+      <div className="first-title">Choice Picker</div>
       <button className="start-button" onClick={handleClick}>Start</button>
     </div>
   );

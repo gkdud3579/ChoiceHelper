@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+    .App {
+      transition: all 0.5s ease-in; 
+    }
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$breakpoint-mobile + 1})
+  {
+    @content;
+    .App {
+      transition: all 0.5s ease-in;
+    }
+  }
+}
