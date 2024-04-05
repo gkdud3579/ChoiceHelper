@@ -22,8 +22,8 @@ function InputPage() {
 
   // 제출 버튼 클릭 핸들러
   const handleSubmit = () => {
-    // const randomChoice = choices[Math.floor(Math.random() * choices.length)];
-    navigate('/loading', { state: { choices: choices } });
+    const filteredChoices = choices.filter((choice) => choice.trim() !== "");
+    navigate("/loading", { state: { choices: filteredChoices } });
   };
 
   return (
