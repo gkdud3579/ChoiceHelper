@@ -16,7 +16,6 @@ function ResultPage() {
     navigate("/");
   };
 
-  // 매개변수 e에 React.MouseEvent<HTMLAnchorElement> 타입 명시
   const handleShareClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); // 기본 동작 방지
     console.log("handleShareClick called");
@@ -28,29 +27,28 @@ function ResultPage() {
       return;
     }
 
-    console.log("Element found, proceeding with capture...");
-
-    try {
-      const canvas = await html2canvas(element);
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          try {
-            const item = new ClipboardItem({ "image/png": blob });
-            await navigator.clipboard.write([item]);
-            alert("이미지가 클립보드에 복사되었습니다.");
-          } catch (clipError) {
-            console.error("클립보드 복사 실패:", clipError);
-            alert("클립보드에 복사할 수 없습니다.");
+    html2canvas(element)
+      .then((canvas) => {
+        canvas.toBlob(async (blob) => {
+          if (blob) {
+            try {
+              const item = new ClipboardItem({ "image/png": blob });
+              await navigator.clipboard.write([item]);
+              alert("이미지가 클립보드에 복사되었습니다.");
+            } catch (clipError) {
+              console.error("클립보드 복사 실패:", clipError);
+              alert("클립보드에 복사할 수 없습니다.");
+            }
+          } else {
+            console.error("Blob 생성 실패");
+            alert("이미지 처리 중 오류가 발생했습니다.");
           }
-        } else {
-          console.error("Blob 생성 실패");
-          alert("이미지 처리 중 오류가 발생했습니다.");
-        }
-      }, "image/png");
-    } catch (error) {
-      console.error("Error capturing the element:", error);
-      alert("캡처 중 오류가 발생했습니다.");
-    }
+        });
+      })
+      .catch((error) => {
+        console.error("Error capturing the element:", error);
+        alert("캡처 중 오류가 발생했습니다.");
+      });
   };
 
   const resultClass = chosen ? determineFont(chosen) : "";
