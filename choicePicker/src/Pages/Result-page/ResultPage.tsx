@@ -16,6 +16,7 @@ function ResultPage() {
     navigate("/");
   };
 
+  // 이미지 다운로드 처리를 위한 함수
   const handleShareClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); // 기본 동작 방지
     console.log("handleShareClick called");
@@ -27,27 +28,19 @@ function ResultPage() {
       return;
     }
 
+    // html2canvas를 사용하여 요소를 캔버스로 변환
     html2canvas(element)
       .then((canvas) => {
-        canvas.toBlob(async (blob) => {
-          if (blob) {
-            try {
-              const item = new ClipboardItem({ "image/png": blob });
-              await navigator.clipboard.write([item]);
-              alert("이미지가 클립보드에 복사되었습니다.");
-            } catch (clipError) {
-              console.error("클립보드 복사 실패:", clipError);
-              alert("클립보드에 복사할 수 없습니다.");
-            }
-          } else {
-            console.error("Blob 생성 실패");
-            alert("이미지 처리 중 오류가 발생했습니다.");
-          }
-        });
+        // 캔버스를 이미지 URL로 변환
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "result-image.png"; // 다운로드 될 파일 이름 지정
+        link.click();
       })
       .catch((error) => {
         console.error("Error capturing the element:", error);
-        alert("캡처 중 오류가 발생했습니다.");
+        alert("이미지 캡처 중 오류가 발생했습니다.");
       });
   };
 
