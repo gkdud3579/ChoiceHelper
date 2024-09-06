@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import html2canvas from "html2canvas";
 import "./ResultPage.scss";
@@ -17,6 +16,7 @@ function ResultPage() {
     navigate("/");
   };
 
+  // 매개변수 e에 React.MouseEvent<HTMLAnchorElement> 타입 명시
   const handleShareClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); // 기본 동작 방지
     console.log("handleShareClick called");
@@ -24,7 +24,7 @@ function ResultPage() {
     const element = document.querySelector(".result-page") as HTMLElement;
     if (!element) {
       console.error("Element not found");
-      alert("캡처할 요소를 찾을 수 없습니다."); // 사용자에게 피드백 제공
+      alert("캡처할 요소를 찾을 수 없습니다.");
       return;
     }
 
@@ -32,14 +32,24 @@ function ResultPage() {
 
     try {
       const canvas = await html2canvas(element);
-      const dataURL = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = dataURL;
-      link.download = "result.png";
-      link.click();
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          try {
+            const item = new ClipboardItem({ "image/png": blob });
+            await navigator.clipboard.write([item]);
+            alert("이미지가 클립보드에 복사되었습니다.");
+          } catch (clipError) {
+            console.error("클립보드 복사 실패:", clipError);
+            alert("클립보드에 복사할 수 없습니다.");
+          }
+        } else {
+          console.error("Blob 생성 실패");
+          alert("이미지 처리 중 오류가 발생했습니다.");
+        }
+      }, "image/png");
     } catch (error) {
       console.error("Error capturing the element:", error);
-      alert("캡처 중 오류가 발생했습니다."); // 오류 발생 시 피드백 제공
+      alert("캡처 중 오류가 발생했습니다.");
     }
   };
 
@@ -51,13 +61,7 @@ function ResultPage() {
       <div className={`result ${resultClass}`}>
         {chosen || "No choice selected"}
       </div>
-      <a
-        onClick={(e) => {
-          console.log("Clicked!");
-          handleShareClick(e);
-        }}
-        style={{ cursor: "pointer" }}
-      >
+      <a onClick={handleShareClick} style={{ cursor: "pointer" }}>
         share your choice
       </a>
       <button onClick={handleClick} className="retry-button">
