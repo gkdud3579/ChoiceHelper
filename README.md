@@ -1,4 +1,75 @@
 # Choice Picker
+
+***Choice Picker*** is a random result generation service designed for people who find it difficult to make decisions among multiple options.  
+![Main Image](/choicePicker/public/ChoicePicker.png)
+
+### [Visit the App](https://choice-helper.vercel.app/)
+
+
+## **Tech Stack**
+
+### Core Technologies
+- React
+- TypeScript
+
+### Routing
+- React Router
+
+### Styling
+- Sass
+
+## **Quick Start**
+|||||
+|:-:|:-:|:-:|:-:|
+|![Image1](/choicePicker/public/ex1.png)|![Image2](/choicePicker/public/ex2.png)|![Image3](/choicePicker/public/ex3.png)|![Image4](/choicePicker/public/ex4.png)|
+|||||
+
+1. **Enter Options**: Up to 5 options can be entered.
+2. **Click "Submit"**: Click the button after entering the options.
+3. **View Results**: After loading, see the randomly chosen result.
+4. **Retry**: Enter new options by clicking the "retry" button.
+5. **Capture and Save**: Use the "share your choice" button to capture and save your result.
+
+
+## **Key Features**
+
+### **Fast Option Input**
+Users can enter up to 5 options.  
+Each input field is clearly separated, making it easy for users to add their options.
+
+
+
+### **Dynamic Font Application**
+Font styles are automatically applied based on the language of the entered text.  
+- For Korean input, the `korean-font` style is applied.  
+- For other languages, the `english-font` style is used, ensuring readability tailored to each language.
+
+
+
+### **Automatic Transition to Results Page with Random Result Generation**
+After clicking the "Submit" button, users are automatically taken to the results page following a 3-second loading period.  
+On this page, one of the entered options is randomly selected and displayed.  
+This feature reduces decision-making stress and aids in making choices.
+
+
+
+### **Retry Function for Results**
+On the results page, users can click the "retry" button to start over and enter new options at any time.  
+This feature is useful for considering other options or making new decisions.
+
+
+
+### **Capture and Save Results**
+On the results page, users can click the "share your choice" button to capture and save their results to their device.  
+This feature is particularly useful for sharing results with others.
+
+
+
+
+---
+
+
+# Choice Picker
 ***Choice Picker***는 다양한 선택지로 인해 결정이 어려운 사람들을 위한 랜덤 결과도출 서비스입니다. <br />
 
 ![대표사진](/choicePicker/public/ChoicePicker.png)
